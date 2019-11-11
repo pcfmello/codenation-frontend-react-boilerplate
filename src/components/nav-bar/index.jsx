@@ -1,18 +1,25 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import {AppBar, Toolbar} from '@material-ui/core'
+
 import Logo from '../../assets/images/logo.png'
 
-
-export default function ButtonAppBar() {
+const ButtonAppBar = ({classes}) => {
 
   return (
     <div >
-      <AppBar position="static">
+      <AppBar position="static" color="primary">
         <Toolbar>
-          <img src={Logo} width={95} alt="Logotipo da Codenation" />
+          <img src={Logo} width={80} alt="Logotipo da Codenation" />
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+ButtonAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default ButtonAppBar

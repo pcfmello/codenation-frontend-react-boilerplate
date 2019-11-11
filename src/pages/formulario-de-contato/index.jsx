@@ -1,10 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
 
-import { TextField, Button, Grid } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import { TextField, Button, FormControl } from '@material-ui/core'
+import { inherits } from 'util'
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,6 +23,10 @@ const ContactSchema = Yup.object().shape({
 });
 
 const styles = {
+  root: {
+    paddingBottom: '1rem',
+    margin: 'inherit 1rem'
+  },
   title: {
     textAlign: 'center',
   },
@@ -30,9 +36,9 @@ const styles = {
 }
 
 export const FormularioDeContato = ({ classes }) => (
-  <div>
+  <div className={classes.root}>
     
-    <h2 className={classes.title}>Contate-nos</h2>
+    <h2 className={classes.title}>Formulário de exemplo usando Formik</h2>
 
     <Formik
       initialValues={{
@@ -56,63 +62,51 @@ export const FormularioDeContato = ({ classes }) => (
         } = props;
 
         return (
-          <Form>
-            <Grid container spacing={1}>
-              <Grid item xs={6}>
-                <TextField
-                  error={errors.name && touched.name}
-                  id="name"
-                  label="Nome"
-                  value={values.name}
-                  onChange={handleChange}
-                  helperText={errors.name}
-                  placeholder="Digite seu nome"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  error={errors.email && touched.email}
-                  id="email"
-                  label="E-mail"
-                  value={values.email}
-                  onChange={handleChange}
-                  helperText={errors.email}
-                  placeholder="Digite seu e-mail"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-            </Grid>
-            <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <TextField
-                  error={errors.message && touched.message}
-                  id="message"
-                  label="Mensagem"
-                  value={values.message}
-                  onChange={handleChange}
-                  helperText={errors.message}
-                  placeholder="Digite sua mensagem"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  rows="4"
-                />
-              </Grid>
-            </Grid>
-
-            <Grid container spacing={1}>
-              <Grid item xs={12} className={classes.button}>
-                <Button type="submit" color="primary" variant="contained" size="large">
-                  ENVIAR
-                </Button>
-              </Grid>
-            </Grid>
-          </Form>
-        )}
-      }
+          <Form>            
+            <TextField
+            error={errors.name && touched.name}
+            id="name"
+            label="Nome"
+            value={values.name}
+            onChange={handleChange}
+            helperText={errors.name}
+            placeholder="Digite seu nome"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            error={errors.email && touched.email}
+            id="email"
+            label="E-mail"
+            value={values.email}
+            onChange={handleChange}
+            helperText={errors.email}
+            placeholder="Digite seu e-mail"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            error={errors.message && touched.message}
+            id="message"
+            label="Mensagem"
+            value={values.message}
+            onChange={handleChange}
+            helperText={errors.message}
+            placeholder="Digite sua mensagem"
+            variant="outlined"
+            fullWidth
+            multiline
+            rows="4"
+            margin="normal"
+          />
+          <Button className={classes.button} type="submit" color="secondary" variant="contained" size="large" fullWidth>
+            ENVIAR
+          </Button>
+            
+        </Form>
+      )}}
     </Formik>
   </div>
 );
