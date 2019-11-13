@@ -1,4 +1,5 @@
 # CODENATION FRONTEND - REACT BOILERPLATE
+
 Um simples boilerplate desenvolvido com React para ser usado nos projetos de aceleração da Codenation.
 
 ## Quais tecnologias estão sendo utilizadas?  
